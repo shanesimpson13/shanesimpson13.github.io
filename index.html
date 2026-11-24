@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shane Simpson</title>
+<meta name="description" content="Shane Simpson: founder who builds and ships AI software end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single column read like a project binder. Hero, built work, how I work, a project schedule (Gantt), then background. */
+:root {
+  --bg: #f5f6f4;
+  --surface: #ffffff;
+  --ink: #14181c;
+  --muted: #5b6168;
+  --line: #d9dcdb;
+  --accent: #2c55c9;
+  --accent-soft: #e3e9fb;
+  --bar: #9aa3ad;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1215; --surface: #161a1f; --ink: #e8ebee; --muted: #9aa2ab;
+    --line: #2a3038; --accent: #86a5ff; --accent-soft: #1c2640; --bar: #56606b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1215; --surface: #161a1f; --ink: #e8ebee; --muted: #9aa2ab;
+  --line: #2a3038; --accent: #86a5ff; --accent-soft: #1c2640; --bar: #56606b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 56px 72px; display: grid; gap: 88px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Hero */
+.hero { display: grid; gap: 28px; }
+.hero h1 {
+  font-size: clamp(56px, 11vw, 112px); line-height: .9; font-weight: 800;
+  font-stretch: 72%; letter-spacing: -.01em; text-transform: uppercase;
+}
+.hero .lede { font-size: clamp(20px, 2.6vw, 25px); line-height: 1.4; max-width: 34ch; font-weight: 500; }
+.hero .lede em { font-style: normal; color: var(--accent); }
+.hero .sub { color: var(--muted); max-width: 62ch; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.links a {
+  font-family: var(--mono); font-size: 14px; text-decoration: none;
+  color: var(--ink); border: 1px solid var(--line); background: var(--surface);
+  padding: 8px 14px; border-radius: 4px;
+}
+.links a:hover { border-color: var(--accent); color: var(--accent); }
+.figures { display: flex; flex-wrap: wrap; gap: 12px 40px; border-top: 1px solid var(--line); padding-top: 22px; }
+.figures div { display: grid; gap: 2px; }
+.figures b { font-family: var(--display); font-size: 30px; font-weight: 700; font-stretch: 85%; font-variant-numeric: tabular-nums; }
+.figures span { font-size: 14px; color: var(--muted); }
+
+/* Section heads */
+section { display: grid; gap: 28px; }
+.head { display: grid; gap: 8px; }
+.head h2 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 750; font-stretch: 80%; line-height: 1.05; }
+.head p { color: var(--muted); max-width: 62ch; }
+
+/* Projects */
+.projects { display: grid; gap: 18px; }
+.proj {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 26px 28px; display: grid; gap: 14px; min-width: 0;
+}
+.proj.feature { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.proj-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.proj h3 { font-size: 26px; font-weight: 750; font-stretch: 85%; }
+.proj .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.proj p { max-width: 66ch; }
+.proj ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 66ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span {
+  font-family: var(--mono); font-size: 12.5px; background: var(--accent-soft);
+  color: var(--ink); padding: 3px 9px; border-radius: 3px;
+}
+.proj-links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 14px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 720px) { .pair { grid-template-columns: 1fr; } .proj { padding: 22px 20px; } }
+
+/* How I work */
+.how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.how div { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--ink); padding-top: 14px; min-width: 0; }
+.how h3 { font-size: 20px; font-weight: 700; font-stretch: 90%; }
+.how p { color: var(--muted); font-size: 16px; }
+@media (max-width: 720px) { .how { grid-template-columns: 1fr; } }
+
+/* Gantt */
+.gantt-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.gantt { min-width: 640px; padding: 18px 22px 14px; display: grid; gap: 9px; }
+.g-row { display: grid; grid-template-columns: 170px 1fr; align-items: center; gap: 14px; }
+.g-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-track { position: relative; height: 18px; }
+.g-bar { position: absolute; top: 3px; height: 12px; border-radius: 2px; background: var(--bar); min-width: 6px; }
+.g-bar.ai { background: var(--accent); }
+.g-bar.open::after {
+  content: ""; position: absolute; right: -6px; top: 0; border-left: 6px solid currentColor;
+  border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+}
+.g-bar.open { color: var(--bar); }
+.g-bar.ai.open { color: var(--accent); }
+.g-axis { position: relative; height: 18px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.g-axis span { position: absolute; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+.g-grid { position: absolute; inset: 0; pointer-events: none; }
+.g-grid i { position: absolute; top: 0; bottom: 0; border-left: 1px dashed var(--line); }
+.g-body { position: relative; display: grid; gap: 9px; }
+.g-body .g-grid { left: 184px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13.5px; color: var(--muted); padding: 0 22px 16px; min-width: 640px; }
+.legend i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: -1px; }
+
+/* Background */
+.cv { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.cv-row { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.cv-row .when { font-family: var(--mono); font-size: 13.5px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.cv-row h3 { font-size: 19px; font-weight: 700; font-stretch: 92%; }
+.cv-row h3 span { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: 16px; }
+.cv-row ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 4px; color: var(--ink); }
+.cv-row > div { min-width: 0; }
+@media (max-width: 600px) { .cv-row { grid-template-columns: 1fr; gap: 4px; } }
+
+footer { border-top: 2px solid var(--ink); padding-top: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: baseline; }
+footer h2 { font-size: 28px; font-weight: 750; font-stretch: 80%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .g-bar { transform-origin: left; animation: grow .7s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes grow { from { transform: scaleX(.001); } to { transform: scaleX(1); } }
+}
+body { margin: 0; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="label">Founder · Builder</div>
+    <h1>Shane<br>Simpson</h1>
+    <p class="lede">I build and ship <em>AI software</em> end to end, from the first prompt to paying users.</p>
+    <p class="sub">I started in construction management and private equity real estate, then founded a consumer software company that was acquired. In 2026 I built four software products on my own, using AI agents as my engineering team. One is a trading platform where customers own their wallets. One is an AI video production system.</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/shane-simpson/">LinkedIn</a>
+      <a href="https://github.com/shanesimpson13">GitHub</a>
+    </div>
+    <div class="figures">
+      <div><b>4</b><span>products shipped solo in 2026</span></div>
+      <div><b>1</b><span>startup acquired</span></div>
+      <div><b>$250M+</b><span>real estate underwritten and developed</span></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="built">
+    <div class="head">
+      <div class="label">Built with AI</div>
+      <h2 id="built">What I've built</h2>
+      <p>Each of these went from idea to working software with AI doing most of the typing and me owning the product, the architecture and the judgement calls.</p>
+    </div>
+
+    <div class="projects">
+      <article class="proj feature">
+        <div class="proj-top">
+          <h3>Reel Factory</h3>
+          <span class="meta">Nov 2026 · AI video production</span>
+        </div>
+        <p>A local AI studio that turns a library of raw phone clips into finished short-form videos in a creator's own style and voice.</p>
+        <ul>
+          <li>Learns an edit template from any reference reel: finds every cut to the exact frame at 30fps and reads the on-screen captions with Apple's Vision text recognition.</li>
+          <li>Cuts labeled clips into on-beat montages (about 20 cuts at 0.65s each) from a recipe, so every clip lands once and categories never repeat back to back.</li>
+          <li>Uses an LLM to write on-brand captions, grounded in a "brand brain" and tone-of-voice guide built from the creator's own story and transcripts.</li>
+          <li>Assembles the project inside a video editing app through an automation client, exports it, and checks the export for black frames.</li>
+          <li>Runs as an always-on local web app. Footage never leaves the machine.</li>
+        </ul>
+        <div class="chips"><span>LLM captioning</span><span>Python</span><span>Apple Vision OCR</span><span>ffmpeg</span><span>app automation</span><span>local-first</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top">
+          <h3>EdgeLvl</h3>
+          <span class="meta">2026 · trading platform</span>
+        </div>
+        <p>A semi-automated trading platform on Solana and Robinhood Chain. The user picks the coin and taps greenlight. The bot watches price every second, waits for a 15% dip and buys the 4% recovery, then takes profit on a ladder. Customers own their wallets: the bot signs under a policy that allows swaps and nothing else, and that policy is tested by trying to steal from it.</p>
+        <div class="chips"><span>Python</span><span>vanilla JS</span><span>Privy wallets</span><span>Jupiter</span><span>LI.FI</span><span>Telegram bot</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/shanesimpson13/edgelvl-terminal">terminal</a>
+          <a href="https://github.com/shanesimpson13/edgelvl-bot">bot</a>
+          <a href="https://github.com/shanesimpson13/edgelvl-api">api</a>
+        </div>
+      </article>
+
+      <div class="pair">
+        <article class="proj">
+          <div class="proj-top">
+            <h3>SCG Alpha</h3>
+            <span class="meta">2026 · signal platform</span>
+          </div>
+          <p>A real-time token intelligence platform built on the GMGN Agent API. It scanned trending tokens every 30 seconds, tracked them across 10+ scans, ran layered scam filters, and published signals to a public dashboard and Telegram, with optional automated trading. 700+ unique visitors in its first week.</p>
+        </article>
+        <article class="proj">
+          <div class="proj-top">
+            <h3>DevFinder</h3>
+            <span class="meta">2026 · on-chain analysis</span>
+          </div>
+          <p>A command-line tool that scores token developers from 0 to 100 by reading their on-chain history and checking whether they dumped their allocation within seconds of launch.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="how">
+    <div class="head">
+      <div class="label">Method</div>
+      <h2 id="how">How I work with AI</h2>
+    </div>
+    <div class="how">
+      <div>
+        <h3>Agents as the team</h3>
+        <p>I run AI coding agents as my engineers. Each project keeps a living brief the agent reads first: what the product is, the rules, and the decisions already made.</p>
+      </div>
+      <div>
+        <h3>Context over prompts</h3>
+        <p>Output quality comes from what the model knows. I write the source material it works from, like Reel Factory's brand brain and voice guide, so its work sounds like the person it's for.</p>
+      </div>
+      <div>
+        <h3>Guardrails before scale</h3>
+        <p>Real money and real users mean real checks: dry runs priced with live quotes, wallets the software can't drain, tests on the decision logic, and automatic checks on every export.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sched">
+    <div class="head">
+      <div class="label">Project schedule</div>
+      <h2 id="sched">2019 to now</h2>
+      <p>Drawn the way I learned to read a build: as a schedule. The blue bars are software I built with AI.</p>
+    </div>
+    <div class="gantt-scroll" role="img" aria-label="Timeline: Bauen Capital 2019 to 2023, Simpson Capital Group 2023 to present, stealth startup 2024 to January 2026 (acquired), then DevFinder, SCG Alpha, EdgeLvl and Reel Factory all built in 2026.">
+      <div class="gantt">
+        <div class="g-row"><span></span>
+          <div class="g-axis">
+            <span style="left:5.62%">2020</span><span style="left:19.10%">2021</span><span style="left:32.58%">2022</span>
+            <span style="left:46.07%">2023</span><span style="left:59.55%">2024</span><span style="left:73.03%">2025</span><span style="left:86.52%">2026</span>
+          </div>
+        </div>
+        <div class="g-body">
+          <div class="g-row"><span class="g-name">Bauen Capital</span><div class="g-track"><div class="g-bar" style="left:0;width:56.18%"></div></div></div>
+          <div class="g-row"><span class="g-name">Simpson Capital Group</span><div class="g-track"><div class="g-bar open" style="left:50.56%;width:49.44%"></div></div></div>
+          <div class="g-row"><span class="g-name">Stealth startup (acquired)</span><div class="g-track"><div class="g-bar" style="left:62.92%;width:24.72%"></div></div></div>
+          <div class="g-row"><span class="g-name">DevFinder</span><div class="g-track"><div class="g-bar ai" style="left:87.64%;width:4.49%"></div></div></div>
+          <div class="g-row"><span class="g-name">SCG Alpha</span><div class="g-track"><div class="g-bar ai" style="left:88.76%;width:7.87%"></div></div></div>
+          <div class="g-row"><span class="g-name">EdgeLvl</span><div class="g-track"><div class="g-bar ai" style="left:88.76%;width:9.0%"></div></div></div>
+          <div class="g-row"><span class="g-name">Reel Factory</span><div class="g-track"><div class="g-bar ai open" style="left:97.75%;width:2.25%"></div></div></div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--bar)"></i>Capital and operating roles</span>
+        <span><i style="background:var(--accent)"></i>Software built with AI</span>
+        <span>▸ ongoing</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bg">
+    <div class="head">
+      <div class="label">Background</div>
+      <h2 id="bg">Before the software</h2>
+      <p>I spent my career scoping, financing and delivering projects with real budgets and deadlines. I run software the same way.</p>
+    </div>
+    <div class="cv">
+      <div class="cv-row">
+        <div class="when">2023 – now</div>
+        <div>
+          <h3>Founder <span>· Simpson Capital Group</span></h3>
+          <ul>
+            <li>Syndicated a $10M+ hotel asset with two GP partners.</li>
+            <li>Acquired, renovated and sold a condo in Los Gatos, CA.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="when">2024 – 2026</div>
+        <div>
+          <h3>Founder <span>· Stealth startup, Los Angeles</span></h3>
+          <ul><li>Founded a consumer software product and led business and growth. Acquired.</li></ul>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="when">2019 – 2023</div>
+        <div>
+          <h3>Development Manager <span>· Bauen Capital, Los Gatos</span></h3>
+          <ul>
+            <li>First hire. Underwrote, acquired and managed development of $250M+ of commercial real estate.</li>
+            <li>Ran tenant improvement projects as construction manager: scope, budget, schedule and subcontractors from preconstruction to completion.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="when">Education</div>
+        <div><h3>Cal Poly San Luis Obispo <span>· B.S. Construction Management</span></h3></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Let's talk.</h2>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/shane-simpson/">LinkedIn</a>
+      <a href="https://github.com/shanesimpson13">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
